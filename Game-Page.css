@@ -81,14 +81,14 @@ body {
     font-family: Arial, sans-serif;
     background-color:darkkhaki;
 
-        /* Padding */
-        padding: 20px;
+    /* Padding */
+    padding: 20px;
 
-        /* Border */
-        border: 5px solid black;
+    /* Border */
+    border: 5px solid black;
 
-        /* Margin */
-        margin: 10px;
+    /* Margin */
+    margin: 10px;
 }
 
 footer {
@@ -97,4 +97,13 @@ footer {
     text-align: center;
     padding: 10px;
     font-family: Times, serif;
+    margin-top: 10px;
+}
+
+.comentario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
 }

@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Video Game Info</title>
-        <link rel="stylesheet" href="Home-Page.css">
+        <link rel="stylesheet" href="Game-Page.css">
     </head>
 
 
@@ -30,20 +30,36 @@
             </nav>
         </header>
 
+        <div class="container">
+            <h1>Search Results</h1>
+            <p>Here are the search results for your query:</p>
+        </div>
+
+        <div id="dynamic-content"></div>
+
+        <section class="comentario">
+            <button id="show-comment-form">Añadir comentario</button>
+            <form id="comment-form" style="display: none;">
+                <label for="comment">Comentario:</label><br>
+                <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
+        <footer>
+            <p>&copy; 2024 Video Game Info. Todos los derechos reservados.</p>
+        </footer>
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                // Array of colors
+
                 const colors = ['blue', 'red', 'green', 'yellow', 'purple', 'white'];
                 let i = 0;
 
-                // Click event
                 document.querySelector('.primero h1').addEventListener('click', function() {
                     this.style.color = colors[i % colors.length];
                     i++;
                 });
 
-                // Mouseover event
                 document.querySelector('.absoluto2').addEventListener('mouseover', function() {
                     this.style.display = 'none';
                     window.setTimeout(() => {
@@ -51,14 +67,12 @@
                     }, 1000);
                 });
 
-                // Get search query from URL parameters
                 let params = new URLSearchParams(window.location.search);
                 let searchQuery = params.get('query');
 
-                // Create a new section element
                 let section = document.createElement('section');
 
-                section.style.marginTop = '20px';
+
                 section.style.padding = '10px';
                 section.style.backgroundColor = 'lightgray';
                 section.style.border = '1px solid black';
@@ -66,10 +80,8 @@
                 section.style.fontSize = '24px';
                 section.style.fontWeight = 'bold';
 
-                // Set the text content of the section to the search query
                 section.textContent = searchQuery.toUpperCase();
 
-                // Append the section to the body
                 document.body.appendChild(section);
 
                 let reviews = [
@@ -85,16 +97,42 @@
                     'Overrated game. Not worth the hype.'
                 ];
 
-                // Create a new paragraph element
                 let paragraph = document.createElement('p');
 
-                // Set the text content of the paragraph to the search query
                 paragraph.textContent = reviews[Math.floor(Math.random() * reviews.length)];
 
                 paragraph.style.textAlign = 'center';
 
-                // Append the paragraph to the body
+
                 document.body.appendChild(paragraph);
+
+                let container = document.querySelector('#dynamic-content');
+
+                container.appendChild(section);
+
+                container.appendChild(paragraph);
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+
+                let showCommentFormButton = document.querySelector('#show-comment-form');
+
+                let commentForm = document.querySelector('#comment-form');
+
+                showCommentFormButton.addEventListener('click', function() {
+                    commentForm.style.display = 'block';
+                });
+
+                showCommentFormButton.style.display = 'block';
+
+                commentForm.addEventListener('submit', function(event) {
+
+                    event.preventDefault();
+
+                    alert('Gracias por tu comentario!');
+
+                    commentForm.reset();
+                });
             });
         </script>
 
