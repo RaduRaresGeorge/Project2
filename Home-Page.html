@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Info</title>
+    <link rel="stylesheet" href="Home-Page.css">
+</head>
+
+
+<body>
+
+<header>
+    <img class="absoluto1" src="resources/dados.png" alt="dados">
+    <div class="primero">
+        <img class="icono" src="resources/icono.png" alt="Video Game Info">
+        <h1>Welcome to Video Game Info</h1>
+        <img class="icono2" src="resources/icono2.png" alt="Video Game Info">
+    </div>
+    <img class="absoluto2" src="resources/squid.png" alt="squid">
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="Home-Page.html">Home</a>
+                </li>
+                <li>
+                    <label>
+                        <input type="text" placeholder="Search game...">
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const colors = ['blue', 'red', 'green', 'yellow', 'purple', 'white'];
+    let i = 0;
+
+    document.querySelector('.primero h1').addEventListener('click', function() {
+        this.style.color = colors[i % colors.length];
+        i++;
+    });
+
+    document.querySelector('.absoluto2').addEventListener('mouseover', function() {
+
+        this.style.display = 'none';
+
+        window.setTimeout(() => {
+            this.style.display = 'block';
+        }, 1000);
+
+    });
+
+    document.querySelector('header nav input[type="text"]').addEventListener('keyup', function(event) {
+
+        if (event.key === 'Enter') {
+
+            event.preventDefault();
+
+            let searchQuery = this.value;
+
+            if (!searchQuery) {
+
+                window.location.href = 'Home-Page.html';
+
+            }else{
+
+                window.location.href = 'Game-Page.html?query=' + searchQuery;
+
+            }
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
